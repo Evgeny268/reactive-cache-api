@@ -6,8 +6,33 @@
 
     <groupId>io.github.nullhater</groupId>
     <artifactId>reactive-cache-api</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
+    <packaging>jar</packaging>
+
+    <name>Reactive Cache Api</name>
     <description>API for a reactive cache built on top of ProjectReactor library entities</description>
+    <url>https://github.com/nullhater/reactive-cache-api</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/license/mit</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Evgeniy Pishchulin</name>
+            <email>evgepishcin@gmail.com</email>
+            <organizationUrl>https://github.com/nullhater</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/nullhater/reactive-cache-api.git</connection>
+        <developerConnection>scm:git:ssh://github.com:nullhater/reactive-cache-api.git</developerConnection>
+        <url>https://github.com/nullhater/reactive-cache-api/tree/main</url>
+    </scm>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
