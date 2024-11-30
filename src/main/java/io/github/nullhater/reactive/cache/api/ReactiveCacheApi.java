@@ -3,7 +3,8 @@ package io.github.nullhater.reactive.cache.api;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.ArrayList;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Interface for a reactive cache API based on Project Reactor.
@@ -101,7 +102,7 @@ public interface ReactiveCacheApi {
      */
     @SuppressWarnings("unchecked")
     default Flux<Object> getFlux(Object key) {
-        return get(key).cast(ArrayList.class).flatMapIterable(arrayList -> arrayList);
+        return get(key).cast(ConcurrentLinkedQueue.class).flatMapIterable(queue -> queue);
     }
 
     /**
@@ -132,7 +133,7 @@ public interface ReactiveCacheApi {
      * @return a {@link Flux} emitting the cached values as they are stored
      */
     default <T> Flux<T> putFlux(Object key, Flux<T> dataStream) {
-        ArrayList<T> data = new ArrayList<>();
-        return dataStream.doOnNext(data::add).concatWith(put(key, data).thenMany(Flux.empty()));
+        Queue<T> queue = new ConcurrentLinkedQueue<>();
+        return dataStream.doOnNext(queue::add).concatWith(put(key, queue).thenMany(Flux.empty()));
     }
 }
